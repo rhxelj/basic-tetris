@@ -59,11 +59,39 @@ document.addEventListener("DOMContentLoaded", () => {
       squares[index + currentPosition].classList.add("tetromino")
     );
   }
+
   function undraw() {
     current.forEach((index) =>
       squares[index + currentPosition].classList.remove("tetromino")
     );
   }
 
-  draw();
+  // I put the tetromino to move
+
+  intervalID = window.setInterval(movedown, 1000);
+
+  function movedown() {
+    undraw();
+    currentPosition += width;
+    draw();
+    freeze();
+  }
+
+  function freeze() {
+    if (
+      current.some((index) =>
+        squares[index + currentPosition + width].classList.contains("taken")
+      )
+    ) {
+      current.forEach((index) =>
+        squares[index + currentPosition].classList.add("taken")
+      );
+      currentPosition = 4;
+      currentRotation = 0;
+      random = Math.floor(Math.random() * theTetrominoes.length);
+
+      current = theTetrominoes[random][currentRotation];
+      draw();
+    }
+  }
 });
