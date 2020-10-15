@@ -1,6 +1,10 @@
 body {
   background: lightblue;
 }
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
 .grid {
   display: flex;
   flex-wrap: wrap;
@@ -16,4 +20,17 @@ body {
 }
 .tetromino {
   background-color: teal;
+}
+
+.minigrid {
+  margin-left: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: yellow;
+  width: 80px;
+  height: 80px;
+}
+.minigrid div {
+  width: 20px;
+  height: 20px;
 }
